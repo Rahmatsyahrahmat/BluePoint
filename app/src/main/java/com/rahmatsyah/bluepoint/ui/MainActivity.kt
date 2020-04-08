@@ -125,96 +125,12 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback,
         }
     }
 
-
-//    override fun onMapReady(googleMap: GoogleMap?) {
-//        map = googleMap
-//        map?.setMaxZoomPreference(17f)
-//        setLocation(LatLng(-6.2088,106.8456))
-////        map?.addCircle(CircleOptions().center(LatLng(-6.2088,106.8456)).radius(200.0).strokeWidth(1f).fillColor(0x66aaaFFF))
-////        drawRadius(-6.2088,106.8456,200.0)
-//
-//
-//        val topLeft = map?.projection?.visibleRegion?.farLeft
-//        val topRight = map?.projection?.visibleRegion?.farRight
-//
-//
-//
-//        var distance = FloatArray(1)
-//        Location.distanceBetween(topLeft!!.latitude,topLeft!!.longitude,topRight!!.latitude,topRight!!.longitude,distance)
-//        radius = (distance[0].toDouble()/4).toDouble()
-//
-//        Log.i("oioioioi",radius.toString())
-//
-////        map?.addCircle(CircleOptions().center(map?.cameraPosition?.target).radius(1000.0).fillColor(0x110000FF).strokeColor(0xFF0000FF.toInt()).strokeWidth(1f))
-//
-//        map?.setOnMapLongClickListener {
-//            map?.addMarker(MarkerOptions().position(it).icon(BitmapDescriptorFactory.fromResource(R.drawable.blue_point)))
-//        }
-//
-//        map?.setOnCameraIdleListener {
-//
-//        }
-//
-//        map?.setOnCameraMoveListener {
-////            Log.i("oioioioi",map?.cameraPosition?.target.toString())
-////            map?.ci
-////            map?.addCircle(CircleOptions().center(map?.cameraPosition?.target).radius(1000.0).fillColor(0x110000FF).strokeColor(0xFF0000FF.toInt()).strokeWidth(1f))
-//
-//        }
-//    }
-//
-//    private fun setLocation(latLng:LatLng){
-//
-//        val cameraUpdate = CameraUpdateFactory.newLatLng(latLng)
-//        val zoom = CameraUpdateFactory.zoomTo(15f)
-//        map?.moveCamera(cameraUpdate)
-//        map?.animateCamera(zoom)
-//        MapsInitializer.initialize(this)
-//
-//    }
-//
-//    private fun drawRadius(lat: Double, lng: Double,radius:Double){
-//        val EARTH_RADIUS = 6378100.0 //in meter
-//        val bearing = 1.57
-//
-//        val lat1 = Math.toRadians(lat)
-//        val lng1 = Math.toRadians(lng)
-//
-//        var lat2 = asin(sin(lat1)*cos(radius/EARTH_RADIUS) + cos(lat1)* sin(radius/EARTH_RADIUS)* cos(bearing))
-//        var lng2 = lng1 + atan2(sin(bearing)* sin(radius/EARTH_RADIUS)* cos(lat1),
-//                                cos(radius/EARTH_RADIUS)- sin(lat1)* sin(lat2))
-//
-//        lat2 = Math.toDegrees(lat2)
-//        lng2 = Math.toDegrees(lng2)
-//
-//        val p1 = map?.projection?.toScreenLocation(LatLng(lat,lng))
-//        val p2 = map?.projection?.toScreenLocation(LatLng(lat2,lng2))
-//
-//
-//        val fill = Paint(Paint.ANTI_ALIAS_FLAG)
-//        fill.color = 0x110000FF
-//        fill.style = Paint.Style.FILL
-//
-//        val stroke = Paint(Paint.ANTI_ALIAS_FLAG)
-//        stroke.color = 0xFF0000FF.toInt()
-//        stroke.style = Paint.Style.STROKE
-//
-//        val circleSize = abs(p1!!.x-p2!!.x)
-//
-//        Log.i("oioioioiP1X",p1!!.x.toString())
-//        Log.i("oioioioiP2X",p2!!.x.toString())
-//        Log.i("oioioioiCS",circleSize.toString())
-//
-//        val b = Bitmap.createBitmap(circleSize*2,circleSize*2,Bitmap.Config.ARGB_8888)
-//        val canvas = Canvas(b)
-//        canvas.drawCircle(circleSize.toFloat(),circleSize.toFloat(),circleSize.toFloat(),fill)
-//        canvas.drawCircle(circleSize.toFloat(),circleSize.toFloat(),circleSize.toFloat(),stroke)
-//
-//    }
-//
-//    private fun onCameraChange(lat:Double,lng:Double){
-//
-//    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode==REQUEST_LOCATION_PERMISSION){
+            presenter.requestLocation(this)
+        }
+    }
 
 }
 
