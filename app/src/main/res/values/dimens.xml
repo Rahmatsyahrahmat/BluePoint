@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginMedium">16dp</dimen>
+
+    <dimen name="textLarge">18sp</dimen>
+    <dimen name="textAppBar">24sp</dimen>
+</resources>
